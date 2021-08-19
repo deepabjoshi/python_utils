@@ -82,4 +82,3 @@ if __name__ == '__main__':
     print('Left rotations of 25:')
     for r in left_rotate_digits_gen(25, 4):
         print(r)
-

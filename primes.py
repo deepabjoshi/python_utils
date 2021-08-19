@@ -43,6 +43,15 @@ def prime_generator_finite(n):
         yield p
 
 
+def is_prime_with_gen(i):
+    primes = []
+    for p in prime_generator_infinite():
+        if p ** 2 > i:
+            break
+        primes.append(p)
+    return is_prime(i, primes)
+
+
 if __name__ == '__main__':
     for i in range(21):
         if is_prime(i, [2, 3, 5]):

@@ -38,10 +38,22 @@ def factorial_gen():
         yield fact
 
 
+def pentagonal_number_gen():
+    for i in it.count(1):
+        yield (i * (3 * i - 1)) // 2
+
+
+def hexagonal_number_gen():
+    for i in it.count(1):
+        yield i * (2 * i - 1)
+
+
 if __name__ == '__main__':
     t = triangular_number_gen()
     s = square_number_gen()
     f = fibonacci_number_gen()
     v = factorial_gen()
+    p = pentagonal_number_gen()
+    h = hexagonal_number_gen()
     for i in range(10):
-        print(next(t), next(s), next(f), next(v))
+        print(next(t), next(s), next(f), next(v), next(p), next(h))
