@@ -52,7 +52,34 @@ def is_prime_with_gen(i):
     return is_prime(i, primes)
 
 
+def find_prime_factors(num, prime_list, prime_gen):
+    factors = []
+    while len(prime_list) == 0 or prime_list[-1] * prime_list[-1] < num:
+        prime_list.append(next(prime_gen))
+
+    idx = 0
+    n = num
+    p = prime_list[idx]
+    while (n > 1) and (p * p <= num):
+        # print('Begin loop:', num, n, p, factors)
+        if n % p == 0:
+            factors.append(p)
+            n //= p
+        else:
+            idx += 1
+            p = prime_list[idx]
+        # print('End loop:', num, n, p, factors)
+    if n > 1:
+        factors.append(n)
+    return factors
+
+
 if __name__ == '__main__':
-    for i in range(21):
+    prime_list = []
+    prime_gen = prime_generator_infinite()
+    print(5, find_prime_factors(5, prime_list, prime_gen), prime_list)
+    for i in range(2, 21):
         if is_prime(i, [2, 3, 5]):
-            print(i)
+            print('Prime:', i)
+        else:
+            print('Composite:', i, find_prime_factors(i, prime_list, prime_gen), prime_list)
