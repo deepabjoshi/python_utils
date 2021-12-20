@@ -43,6 +43,20 @@ def left_rotate_digits_gen(num, rotations=None):
         yield num
 
 
+def is_palindrome(num):
+    digits = get_digits(num)
+    n = len(digits)
+    for i in range(0, n // 2 + 1):
+        if digits[i] != digits[n - i - 1]:
+            return False
+    return True
+
+
+def reverse_num(num):
+    digits = get_digits(num)
+    return get_num(reversed(digits))
+
+
 if __name__ == '__main__':
     print('get_digits(1234) = ', get_digits(1234))
     print('get_digits(555) = ', get_digits(555))
@@ -82,3 +96,13 @@ if __name__ == '__main__':
     print('Left rotations of 25:')
     for r in left_rotate_digits_gen(25, 4):
         print(r)
+
+    print(8, is_palindrome(8))
+    print(555, is_palindrome(555))
+    print(1221, is_palindrome(1221))
+    print(12321, is_palindrome(12321))
+    print(1224, is_palindrome(1224))
+
+    print(1234, reverse_num(1234))
+    print(5, reverse_num(5))
+    print(0, reverse_num(0))
