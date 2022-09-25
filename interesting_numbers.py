@@ -48,6 +48,16 @@ def hexagonal_number_gen():
         yield i * (2 * i - 1)
 
 
+def heptagonal_number_gen():
+    for i in it.count(1):
+        yield (i * (5 * i - 3)) // 2
+
+
+def octagonal_number_gen():
+    for i in it.count(1):
+        yield i * (3 * i - 2)
+
+
 if __name__ == '__main__':
     t = triangular_number_gen()
     s = square_number_gen()
@@ -55,5 +65,7 @@ if __name__ == '__main__':
     v = factorial_gen()
     p = pentagonal_number_gen()
     h = hexagonal_number_gen()
+    j = heptagonal_number_gen()
+    o = octagonal_number_gen()
     for i in range(10):
-        print(next(t), next(s), next(f), next(v), next(p), next(h))
+        print(next(t), next(s), next(f), next(v), next(p), next(h), next(j), next(o))
